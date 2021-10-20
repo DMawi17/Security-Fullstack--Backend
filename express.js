@@ -8,8 +8,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use((req, res, next) => {
-    console.log(`\n[ ${req.method} ] REQUEST ON ROUTE [ ${req.path} ]`);
     next();
+    console.info(`${req.method} Request on ${req.path}`);
 });
 
 app.use("/", usrRoutes);

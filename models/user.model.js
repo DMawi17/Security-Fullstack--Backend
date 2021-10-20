@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import validator from "validator";
 
 const { Schema, model } = mongoose;
-const { genSalt, hash, compare } = bcrypt;
+const { genSalt, hash /* compare */ } = bcrypt;
 const { isEmail } = validator;
 
 const UserSchema = new Schema({
@@ -18,6 +18,11 @@ const UserSchema = new Schema({
         required: "Password is required",
         minlength: [6, "The minimum length of 6 characters."],
     },
+    created: {
+        type: Date,
+        default: Date.now,
+    },
+    updated: Date,
 });
 
 UserSchema.pre("save", async function (next) {

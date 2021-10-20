@@ -14,6 +14,6 @@ connection.on("error", () =>
 
 app.listen(config.port, (e) =>
     e
-        ? console.log(`NOT listening ${e}`)
+        ? console.log(`NOT listening.. ${e}`)
         : console.info("Server started on port %s.", config.port)
 );

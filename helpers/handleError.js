@@ -1,5 +1,4 @@
 const handleErrors = (err) => {
-    console.log(err);
     let errors = {};
 
     if (err.code === 11000) {
