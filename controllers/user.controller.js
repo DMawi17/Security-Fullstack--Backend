@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 import handleErrors from "../helpers/handleError.js";
 
-const register = async (req, res) => {
+export const register = async (req, res) => {
     const user = new User(req.body);
     try {
         await user.save();
@@ -11,5 +11,3 @@ const register = async (req, res) => {
         res.status(400).json({ errors });
     }
 };
-
-export default { register };

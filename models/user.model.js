@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import validator from "validator";
 
 const { Schema, model } = mongoose;
-const { genSalt, hash /* compare */ } = bcrypt;
+const { genSalt, hash, compare } = bcrypt;
 const { isEmail } = validator;
 
 const UserSchema = new Schema({
@@ -31,8 +31,8 @@ UserSchema.pre("save", async function (next) {
     next();
 });
 
-// UserSchema.statics.authenticate = async (plainText) => {
-//     return compare(plainText, this.password);
-// };
+UserSchema.methods.authenticate = (plainText) => {
+    return compare(plainText, this.password);
+};
 
 export default model("User", UserSchema);
